@@ -2,6 +2,7 @@
 * I've used Laravel Herd along with DBngin for the local development.
 * Please copy the example environment file first: cp .env.example .env
 * Then connect with the database, please ensure the database table exists.
+* Please ensure that .env file is configured to use a queue connection that supports background processing, like Redis, SQS, or database.
 * I've attached a postman collection at root directory "./postman.json"
 * Maybe MAIL_MAILER=log or Mailtrap config can be used to test it quickly.
 
