@@ -1,10 +1,18 @@
-## Implementation
-* Migrations, seeders, factories, models, controllers all are in their respective places
-* Requests are used for dealing with user inputs and validations
-* Queue / Jobs, Command, Event, Listeners, Cache has been used.
-
+## Development
+* I've used Laravel Herd along with DBngin for the local development.
+* Please copy the example environment file first: cp .env.example .env
+* Then connect with the database, please ensure the database table exists.
+* I've attached a postman collection at root directory "./postman.json"
 * Maybe MAIL_MAILER=log or Mailtrap config can be used to test it quickly.
-* The command should be running in each minute as a cron job: "php artisan posts:notify-new"
+
+## Implementation
+* Migrations, seeders, factories, models, controllers all are in their respective places.
+* Requests are used for dealing with user inputs and validations.
+* Queue / Jobs, Command, Events, Listeners, Cache has been used.
+
+## Command
+* The command that sends new posts notification email to the subscribers only once is: "php artisan posts:notify-new"
+* This command is also added to laravel scheduler (app/Console/Kernel.php), laravel scheduler should be running as a cron job or in local server: php artisan schedule:work
 
 ## Routes: only API routes are available
 * Authentication or Authorization wasn't a requirement, skipped it entirely.
