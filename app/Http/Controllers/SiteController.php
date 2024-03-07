@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Site;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class SiteController extends Controller
 {
@@ -12,10 +13,14 @@ class SiteController extends Controller
      */
     public function index()
     {
-        return response()->json(
-            Site::query()
-                ->paginate()
-        );
+        $page = request('page', 1);
+        $perPage = request('perPage', 15);
+
+        $sites = Cache::remember("sites.page.{$page}.perPage.{$perPage}", 60, function () use ($perPage) {
+            return Site::query()->paginate($perPage);
+        });
+
+        return response()->json($sites);
     }
 
     /**
@@ -23,7 +28,18 @@ class SiteController extends Controller
      */
     public function show(string $id)
     {
-        $site = Site::find($id);
+        $site = Cache::remember("sites.{$id}", 60 * 60, function () use ($id) {
+            return Site::find($id);
+        });
+
+        if (!$site) {
+            return response()->json(['message' => 'Site not found.'], 404);
+        }
+
+        return response()->json($site);
+        $site = Cache::remember("sites.{$id}", 60 * 60, function () use ($id) {
+            return Site::find($id);
+        });
 
         if (!$site) {
             return response()->json(['message' => 'Site not found.'], 404);
