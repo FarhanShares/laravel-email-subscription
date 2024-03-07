@@ -18,10 +18,10 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'site_id' => Site::factory(), // This creates a new Site for each Post or use Site::inRandomOrder()->first()->id for existing.
+            'site_id' => Site::inRandomOrder()->first()->id,
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'notified_at' => null, // Assuming this field is used to track notification status
+            'notified_at' => now(),
         ];
     }
 }

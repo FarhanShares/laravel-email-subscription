@@ -1,4 +1,8 @@
-##
+## Implementation
+* Migrations, seeders, factories, models, controllers all are in their respective places
+* Requests are used for dealing with user inputs and validations
+* Queue / Jobs, Command, Event, Listeners, Cache has been used.
+
 
 ## Routes: only API routes are available
 * Authentication or Authorization wasn't a requirement, skipped it entirely.
