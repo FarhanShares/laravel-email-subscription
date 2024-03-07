@@ -15,4 +15,10 @@ class Subscriber extends Model
     {
         return $this->belongsTo(Site::class);
     }
+
+    // Get the email notifications associated with the subscriber.
+    public function emailNotifications()
+    {
+        return $this->hasMany(EmailNotification::class, 'subscriber_id');
+    }
 }

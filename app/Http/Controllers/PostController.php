@@ -32,8 +32,9 @@ class PostController extends Controller
         $post->description = $request->description;
         $post->save();
 
-        // Dispatch the event
-        PostCreated::dispatch($post);
+        // Dispatch the event: the command scheduler is handling it
+        // If we wish to dispatch here, notified_at field should be updated
+        // PostCreated::dispatch($post);
 
         return response()->json($post, 201);
     }

@@ -15,4 +15,10 @@ class Post extends Model
     {
         return $this->belongsTo(Site::class);
     }
+
+    // Get the email notifications associated with the post.
+    public function emailNotifications()
+    {
+        return $this->hasMany(EmailNotification::class, 'post_id');
+    }
 }
