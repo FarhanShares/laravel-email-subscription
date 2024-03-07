@@ -3,6 +3,8 @@
 * Requests are used for dealing with user inputs and validations
 * Queue / Jobs, Command, Event, Listeners, Cache has been used.
 
+* Maybe MAIL_MAILER=log or Mailtrap config can be used to test it quickly.
+* The command should be running in each minute as a cron job: "php artisan posts:notify-new"
 
 ## Routes: only API routes are available
 * Authentication or Authorization wasn't a requirement, skipped it entirely.

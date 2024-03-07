@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'site_id' => Site::inRandomOrder()->first()->id,
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
-            'notified_at' => now(),
+            'notified_at' => null,
         ];
     }
 }
